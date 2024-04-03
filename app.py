@@ -5,8 +5,4 @@ app=Flask(__name__,template_folder='view/templates')
 def welcome():
     return render_template('index.html')
 
-@app.route("/home")
-def home():
-    return " Home my "
-
 from controller import *
