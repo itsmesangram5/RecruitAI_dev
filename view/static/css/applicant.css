@@ -1,0 +1,45 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .box {
+    width: calc(50% - 20px); /* Two boxes per row with 20px spacing */
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  .red {
+    background-color: #ff6b6b;
+  }
+  
+  .green {
+    background-color: #6abf69;
+  }
+  
+  .blue {
+    background-color: #6ca3f7;
+  }
+  
+  .yellow {
+    background-color: #f7f56c;
+  }
+  
+  /* Responsive Styles */
+  @media only screen and (max-width: 768px) {
+    .box {
+      width: calc(100% - 20px); /* Single box per row with 20px spacing */
+    }
+  }
+  
