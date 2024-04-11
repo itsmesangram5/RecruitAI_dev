@@ -1,151 +1,196 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Listings</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .job {
-      margin-bottom: 20px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 20px;
-    }
-    .job-title {
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-    }
-    .company-name {
-      font-size: 16px;
-      color: #666;
-    }
-    .job-description {
-      font-size: 16px;
-      color: #444;
-    }
-    .apply-button {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .apply-button:hover {
-      background-color: #0056b3;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="job">
-      <h2 class="job-title">Software Engineer</h2>
-      <p class="company-name">Company name</p>
-      <p class="job-description">We are looking for a talented Software Engineer to join our team. The ideal candidate will have experience in web development and strong problem-solving skills.</p>
-      <button class="apply-button">Apply Now</button>
-    </div>
-    <div class="job">
-      <h2 class="job-title">Marketing Manager</h2>
-      <p class="company-name">Company name</p>
-      <p class="job-description">Company ABC is seeking a Marketing Manager to develop and execute marketing strategies. The successful candidate will have a strong background in marketing and excellent communication skills.</p>
-      <button class="apply-button">Apply Now</button>
-    </div>
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Job Listings</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    .job {
-      margin-bottom: 20px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 20px;
-    }
-    .job-title {
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-    }
-    .company-name {
-      font-size: 16px;
-      color: #666;
-    }
-    .job-description {
-      font-size: 16px;
-      color: #444;
-    }
-    .apply-button {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .apply-button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+    <meta charset="UTF-15">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha3154-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT15bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha3154-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/76051b1a44.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/jobs.css')}}" />
+
+    <title>Document</title>
+
+
+  
 </head>
-<body>
-  <div class="container">
-    <div class="job">
-      <h2 class="job-title">Java Developer</h2>
-      <p class="company-name">CodeCrafters LLC </p>
-      <p class="job-description">CodeCrafters LLC is seeking a Java Developer to develop high-quality software applications. The ideal candidate will have strong Java programming skills and experience with Spring framework.</p>
-      <button class="apply-button">Apply Now</button>
-    </div>
-    <div class="job">
-      <h2 class="job-title">Full Stack Developer</h2>
-      <p class="company-name">CodeCrafters LLC</p>
-      <p class="job-description">CodeCrafters LLC is looking for a Full Stack Developer to work on our web application projects. The successful candidate will have experience with both front-end and back-end technologies.</p>
-      <button class="apply-button">Apply Now</button>
-    </div>
-    <div class="job">
-      <h2 class="job-title">MERN Stack Developer</h2>
-      <p class="company-name">CodeCrafters LLC</p>
-      <p class="job-description">CodeCrafters LLC is hiring a MERN Stack Developer to build dynamic web applications. The ideal candidate should be proficient in MongoDB, Express.js, React.js, and Node.js.</p>
-      <button class="apply-button">Apply Now</button>
-    </div>
-    <div class="job">
-        <h2 class="job-title">Marketing Manager</h2>
-        <p class="company-name">CodeCrafters LLC</p>
-        <p class="job-description">CodeCrafters LLC is seeking a Marketing Manager to develop and execute marketing strategies. The successful candidate will have a strong background in marketing and excellent communication skills.</p>
-        <button class="apply-button">Apply Now</button>
+<body class="contain">
+    <nav id="navbar-example15" class="navbar sticky-top bg-dark border-bottom border-body" data-bs-theme="dark">
+        <a class="navbar-brand" href="#">       
+            <span style="font-size: 30px; margin-left: 20px;" class="homepagetxt">RecruitAI</span> 
+        </a>
+        <a style="font-weight: bold; font-size: 25px; letter-spacing: 0.1cap;" class="navbar-brand">Jobs </a>
+        <ul class="nav nav-pills">
+         
+          <li class="nav-item dropdown">
+            <a style="font-size: 20px;color: whitesmoke;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">     <i style="padding-right: 4px;" class="fa-solid fa-user-tie"></i> 
+                Username</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/applicant">Home</a></li>
+              <li><a class="dropdown-item" href="/applications">Application</a></li>
+              <li><a class="dropdown-item" href="/uploadresume">Upload resume</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a  class="dropdown-item" href="#scrollspyHeading5"><i style="padding-right: 4px;" class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div >
+        <div class="card-container">
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+                   <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <div class="card">
+              <h5>React Developer</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
+              <div class="details">
+                  <span>CTC: $800</span>
+                  <span>Location: New York</span>
+              </div>
+
+              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+
+            </div>
+          <!-- Add more cards here -->
       </div>
-    <!-- Add more job listings here with respective company names -->
-  </div>
+      </div>
+    
+   
+    <script>
+        // Show dropdown menu
+        // Show tooltip box
+        // Toggle tooltip box
+        function toggleTooltip() {
+            var tooltip = document.getElementById("tooltipBox");
+            if (tooltip.style.display === "block") {
+                tooltip.style.display = "none";
+            } else {
+                tooltip.style.display = "block";
+            }
+        }
+        
+        // Close tooltip box if clicked outside
+        window.onclick = function(event) {
+            var tooltip = document.getElementById("tooltipBox");
+            if (event.target !== tooltip && event.target.closest('.openbtn') === null) {
+                tooltip.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -4,147 +4,31 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Website with Login & Registration Form</title>
-        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}" />
+        <title>Recruiter Page</title>
         <!-- Unicons -->
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+        <link rel="stylesheet" href="{{url_for('static',filename='css/recruiter.css')}}" />
         <script src="https://kit.fontawesome.com/76051b1a44.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-      
+       
         <!-- Custom CSS -->
         <style>
-          body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
+         .btn:hover
+         {
+          background-color: black;
+          color: white;
+          font-weight: bolder;
+          transition-duration: 0.4s;
+          cursor: pointer;
           }
-          .homepagetxt{
-         
-         
-         background: transparent;
-         position: fixed;
-         margin-left: 3%;
-         margin-right: 50%;
-          /* Updated to place the button on the top right side */
-         z-index: 1000;
-         color: white;
-         font-size: 60PX;
-      font-family:cursive;
-      font-weight: bolder;
-      border-bottom: 3px solid red;
-      padding-top: 10px;
-      
-      }
-      .homepagetxt2{
-        
-       font-size: 25px;
-       background: transparent;
-       position: fixed;
-       margin-left: 3%;
-       margin-right: 50%;
-       margin-top: 4%;/* Updated to place the button on the top right side */
-       z-index: 1000;
-       color: white;
-       font-size: 40PX;
-      font-family:Billabong;
-      
-      padding-top: 4px;
-      border-bottom: 3px solid red;
-      
-      }
-          /* Button style */
-          .openbtn {
-            font-size: 20px;
-            cursor: pointer;
-            border: none;
-            outline: none;
-            color: white;
-            background: transparent;
-            position: fixed;
-            top: 20px;
-            right: 20px; /* Updated to place the button on the top right side */
-            z-index: 1000;
-            margin-right: 10px;
-            border:2px solid white;
-            padding: 10px 30px;
-            border-radius: 15px;
-          }
-      
-          /* Sidebar style */
-          .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            right: 0; /* Adjusted to position the sidebar on the right side */
-            background-color: gray;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-          }
-      
-          .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #000000;
-            display: block;
-            transition: 0.3s;
-          }
-      
-          .sidenav a:hover {
-            color: #f1f1f1;
-          }
-      
-          .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-          }
-          /* Dropdown menu style */
-      /* Tooltip style */
-      /* Tooltip style */
-      .tooltip-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        padding: 10px 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        z-index: 1001;
-        margin-top: 10px;
-        margin-top: 15px;
-        width: 200px;
-      }
-      
-      .tooltip-content a {
-        display: block;
-        text-decoration: none;
-        color: #000;
-      }
-      
-      .tooltip-content a:hover {
-        color: green;
-        
-      }
-      
-      
-      
-      
         </style>
+
       </head>
-      
-      <body style="background-color: rgb(0, 0, 0);">
-        <!-- Button to open the sidebar -->
-      <!-- Button to open the sidebar with dropdown menu -->
-      <!-- Button to open the sidebar with tooltip box -->
-      <!-- Button to open the sidebar with tooltip box -->
+      <body class="contain" >
+
       <span class="openbtn" onclick="toggleTooltip()">
           <i style="padding-right: 4px;" class="fa-regular fa-user"></i>
           <span id="username">RecruiterName</span>
@@ -152,38 +36,40 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
             <a href="#"><i style="padding-right: 4px;" class="fa-regular fa-pen-to-square"></i>Edit Profile</a>
             <a href="#"><i style="padding-right: 4px;" class="fa-solid fa-right-from-bracket"></i>Logout</a>
           </div>
-        </span>
+      </span>
         
         
         <!-- The sidebar -->
       
-        <span style="font-size: 40px;" class="homepagetxt">RecruitAI</span> 
+      <span style="font-size: 40px;" class="homepagetxt">RecruitAI</span> 
         <!-- <span style="font-size: 25px;" class="homepagetxt2">As accurate as you !</span> -->
         <!-- Home section -->
-      <div  class="ms-15 " style="display: flex; margin-left: 50px;padding-top: 8%; ">
-          <div class="card mt-5" style="width: 22rem;">
-              <img src="../static/images/applicantimg1.jpg" style="padding-right: 35px;" class="card-img-top" alt="...">
+      <div class="ms-15 "  style="display: flex; margin-left: 90px;padding-top: 8%; ">
+          <div class="card mt-5" style="width: 19rem;">
+            <img src="../static/images/recruiterimgfirst.jpg"  width="210px" style="margin-left: 30px;margin-top: 10px;" alt="...">
+
               <div class="card-body">
-                <h5 class="card-title">Applicantion</h5>
+                <h5 class="card-title">Posted Jobs</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="/postedjobs" class="btn btn-primary">Posted Jobs</a>
               </div>
-            </div><div class="card mt-5 ms-5" style="width: 22rem;">
-              <img src="../static/images/applicantimg2.jpg" class="card-img-top" alt="...">
+            </div><div class="card mt-5 ms-5" style="width: 19rem;">
+              <img src="../static/images/recruiterimg2.jpg"  width="270px" height="183px" style="margin-left: 20px; margin-top: 37px;" alt="...">
+
               <div class="card-body">
-                <h5 class="card-title">Resume</h5>
+                <h5 class="card-title">Job Description</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Upload resume</a>
+                <a href="/jobdescriptionform" class="btn btn-primary">Description</a>
               </div>
-            </div><div class="card mt-5 ms-5" style="width: 22rem;">
-              <img src="../static/images/applicantimg3.jpg.png"  width="230px" style="margin-left: 50px;" alt="...">
+            </div><div class="card mt-5 ms-5" style="width: 19rem;">
+              <img src="../static/images/recruiterimgsthird.png"  width="220px" style="margin-left: 40px; "  alt="...">
               <div class="card-body">
-                <h5 class="card-title">Jobs</h5>
+                <h5 class="card-title">Shortlisting</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">See Jobs posting</a>
+                <a href="/shortlisting" class="btn btn-primary">Shortlisting</a>
               </div>
-            </div><div class="card mt-5 ms-5" style="width: 22rem;">
-              <img src="../static/images/applicantimg4.jpg" width="230px" style="margin-left: 50px;" alt="...">
+            </div><div class="card mt-5 ms-5" style="width: 19rem;">
+              <img src="../static/images/applicantimg4.jpg" width="220px" style="margin-left: 40px;" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Upcoming</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -199,7 +85,8 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
           // Show dropdown menu
       // Show tooltip box
       // Toggle tooltip box
-      function toggleTooltip() {
+      function toggleTooltip() 
+      {
         var tooltip = document.getElementById("tooltipBox");
         if (tooltip.style.display === "block") {
           tooltip.style.display = "none";
@@ -209,13 +96,13 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
       }
       
       // Close tooltip box if clicked outside
-      window.onclick = function(event) {
+      window.onclick = function(event) 
+      {
         var tooltip = document.getElementById("tooltipBox");
         if (event.target !== tooltip && event.target.closest('.openbtn') === null) {
           tooltip.style.display = "none";
         }
       }
-      
       
         </script>
         </script>
