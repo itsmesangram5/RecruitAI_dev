@@ -4,8 +4,8 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Website with Login & Registration Form</title>
-  <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}" />
+  <title>Applicant page</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/applicant.css')}}" />
   <!-- Unicons -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
   <script src="https://kit.fontawesome.com/76051b1a44.js" crossorigin="anonymous"></script>
@@ -14,129 +14,7 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-    }
-    .homepagetxt{
-   
-   
-   background: transparent;
-   position: fixed;
-   margin-left: 3%;
-   margin-right: 50%;
-    /* Updated to place the button on the top right side */
-   z-index: 1000;
-   color: white;
-   font-size: 60PX;
-font-family:cursive;
-font-weight: bolder;
-border-bottom: 3px solid red;
-padding-top: 10px;
-
-}
-.homepagetxt2{
   
- font-size: 25px;
- background: transparent;
- position: fixed;
- margin-left: 3%;
- margin-right: 50%;
- margin-top: 4%;/* Updated to place the button on the top right side */
- z-index: 1000;
- color: white;
- font-size: 40PX;
-font-family:Billabong;
-
-padding-top: 4px;
-border-bottom: 3px solid red;
-
-}
-    /* Button style */
-    .openbtn {
-      font-size: 20px;
-      cursor: pointer;
-      border: none;
-      outline: none;
-      color: white;
-      background: transparent;
-      position: fixed;
-      top: 20px;
-      right: 20px; /* Updated to place the button on the top right side */
-      z-index: 1000;
-      margin-right: 10px;
-      border:2px solid white;
-      padding: 10px 30px;
-      border-radius: 15px;
-    }
-
-    /* Sidebar style */
-    .sidenav {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      right: 0; /* Adjusted to position the sidebar on the right side */
-      background-color: gray;
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
-    }
-
-    .sidenav a {
-      padding: 8px 8px 8px 32px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #000000;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .sidenav a:hover {
-      color: #f1f1f1;
-    }
-
-    .sidenav .closebtn {
-      position: absolute;
-      top: 0;
-      right: 25px;
-      font-size: 36px;
-      margin-left: 50px;
-    }
-    /* Dropdown menu style */
-/* Tooltip style */
-/* Tooltip style */
-.tooltip-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  z-index: 1001;
-  margin-top: 10px;
-  margin-top: 15px;
-}
-
-.tooltip-content a {
-  display: block;
-  text-decoration: none;
-  color: #000;
-}
-
-.tooltip-content a:hover {
-  color: green;
-  
-}
-
-
-
-
-  </style>
 </head>
 
 <body style="background-color: rgb(0, 0, 0);">
@@ -159,34 +37,34 @@ border-bottom: 3px solid red;
   <span style="font-size: 40px;" class="homepagetxt">RecruitAI</span> 
   <!-- <span style="font-size: 25px;" class="homepagetxt2">As accurate as you !</span> -->
   <!-- Home section -->
-<div  class="ms-15 " style="display: flex; margin-left: 50px;padding-top: 8%; ">
-    <div class="card mt-5" style="width: 22rem;">
-        <img src="../static/images/applicantimg1.jpg" style="padding-right: 35px;" class="card-img-top" alt="...">
+<div  class="ms-15 " style="display: flex; margin-left: 50px;padding-top: 8%; align-items: justify;">
+    <div class="card mt-5" style="width: 20rem;">
+        <img src="../static/images/applicantimg01.jpg" style=" width: 230px; height: 220px; margin-left:40px; " class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Applicantion</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="/applications" class="btn btn-primary">Applications</a>
         </div>
-      </div><div class="card mt-5 ms-5" style="width: 22rem;">
-        <img src="../static/images/applicantimg2.jpg" class="card-img-top" alt="...">
+      </div><div class="card mt-5 ms-5" style="width: 20rem;">
+        <img src="../static/images/applicantimg2.jpg" style="width: 320px;margin-top: 5px;" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Resume</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Upload resume</a>
+          <a href="/uploadresume" class="btn btn-primary">Upload resume</a>
         </div>
-      </div><div class="card mt-5 ms-5" style="width: 22rem;">
-        <img src="../static/images/applicantimg3.jpg.png"  width="230px" style="margin-left: 50px;" alt="...">
+      </div><div class="card mt-5 ms-5" style="width: 20rem;">
+        <img src="../static/images/applicantimg03.jpg"  width="220px" style="margin-left: 50px;" alt="...">
         <div class="card-body">
           <h5 class="card-title">Jobs</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">See Jobs posting</a>
+          <a href="/jobs" class="btn btn-primary">Jobs </a>
         </div>
-      </div><div class="card mt-5 ms-5" style="width: 22rem;">
-        <img src="../static/images/applicantimg4.jpg" width="230px" style="margin-left: 50px;" alt="...">
+      </div><div class="card mt-5 ms-5" style="width: 20rem;">
+        <img src="../static/images/applicantimg4.jpg" width="220px" style="margin-left: 50px;" alt="...">
         <div class="card-body">
           <h5 class="card-title">Upcoming</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Next Jobs</a>
+          <a href="#" class="btn btn-primary">Upcoming Jobs</a>
         </div>
       </div>
     </div>

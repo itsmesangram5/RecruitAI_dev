@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #343a40;
+}
+
+.homepagetxt {
+  background: transparent;
+  margin-left: 3%;
+  margin-right: 50%;
+  z-index: 1000;
+  color: white;
+  font-size: 60px;
+  font-family: cursive;
+  font-weight: bolder;
+  border-bottom: 3px solid red;
+}
+
+.navbar {
+  position: fixed;
+  background-color: black;
+  width: 100%;
+}
+
+/* Centered Div */
+.centered-div {
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  width: 70%;
+  display: flex;
+  border-radius: 15px;
+}
+
+/* Left Part */
+.left-part {
+  flex: 30%;
+  background-color: #f0f0f0;
+  padding: 20px;
+  padding-top: 37px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+/* Right Part */
+.right-part {
+  flex: 70%;
+  background-color: #ffffff;
+  padding: 40px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 80vh; /* Adjust max height as needed */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Image Style */
+.left-part img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form Style */
+.right-part form {
+  text-align: left; /* Align form elements to the left */
+  max-width: 100%; /* Ensure form doesn't exceed parent width */
+}
+
+.right-part form .form-label {
+  font-weight: bold; /* Make form labels bold */
+}
+
+.right-part form .form-control {
+  margin-bottom: 10px; /* Add some spacing between form controls */
+}
+.bg-dark {
+  --bs-bg-opacity: 1;
+  background-color: rgb(0 0 0) !important;
+}
+.dropdown-menu {
+  margin-left: 19%;
+}
+.contain {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5) url("../images/resultimgbg.jpg") no-repeat
+    fixed;
+  background-blend-mode: darken;
+  background-size: cover;
+  height: 540px;
+}
+/* .row input{
+          border: 0.1px solid black;
+    } */

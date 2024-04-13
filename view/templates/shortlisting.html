@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shortlisting Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha3154-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT15bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha3154-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/76051b1a44.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/shortlisting.css')}}"
+    />
+  </head>
+  <body class="contain">
+    <nav
+      id="navbar-example15"
+      class="navbar sticky-top bg-dark border-bottom border-body"
+      data-bs-theme="dark"
+    >
+      <a class="navbar-brand" href="#">
+        <span style="font-size: 30px; margin-left: 20px" class="homepagetxt"
+          >RecruitAI</span
+        >
+      </a>
+      <a
+        style="font-weight: bold; font-size: 25px; letter-spacing: 0.1cap"
+        class="navbar-brand"
+        >Shortlisting</a
+      >
+      <ul class="nav nav-pills">
+        <li class="nav-item dropdown">
+          <a
+            style="font-size: 20px; color: whitesmoke"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false"
+          >
+            <i style="padding-right: 4px" class="fa-regular fa-user"></i>
+            RecruiterName</a
+          >
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/recruiter">Home</a></li>
+            <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" href="#scrollspyHeading5"
+                ><i
+                  style="padding-right: 4px"
+                  class="fa-solid fa-right-from-bracket"
+                ></i
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div style="margin-left: 300px" id="newtxt">
+      <div style="width: 354px; margin-left: -310px" class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Select Job for Shortlisting</span
+        >
+        <select id="inputState" class="form-select">
+          <option selected>Choose one..</option>
+          <option>Java Developer</option>
+          <option>Web Developer</option>
+          <option>Data Analyst</option>
+        </select>
+      </div>
+      <div id="headingtxt2">
+        <span
+          style="
+            border-left: 5px solid orangered;
+            padding-left: 6px;
+            margin-left: 7px;
+          "
+          >Enter number candidates to be shortlisted </span
+        ><input
+          style="
+            width: 60px;
+            background-color: white;
+            color:black;
+            margin-left: 8px;
+            height: 25px;
+            border-radius: 4px;
+          "
+          type="int"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <button class="reset-btn" onclick="resetValues()">Reset</button>
+      <h4 id="headingtxt">Candidate Shortlisting criteria</h4>
+      <div class="skill-range-container">
+        <label for="softSkillRange" class="skill-label">Soft Skills:</label>
+        <input
+          type="range"
+          id="softSkillRange"
+          class="skill-range"
+          name="softSkillRange"
+          min="0"
+          max="100"
+          value="0"
+        />
+        <span id="softSkillValue" class="skill-value">0</span>
+      </div>
+      <div class="skill-range-container">
+        <label for="technicalSkillRange" class="skill-label"
+          >Technical Skills:</label
+        >
+        <input
+          type="range"
+          id="technicalSkillRange"
+          class="skill-range"
+          name="technicalSkillRange"
+          min="0"
+          max="100"
+          value="0"
+        />
+        <span id="technicalSkillValue" class="skill-value">0</span>
+      </div>
+      <div class="skill-range-container">
+        <label for="projectWeightageRange" class="skill-label"
+          >Project Weightage:</label
+        >
+        <input
+          type="range"
+          id="projectWeightageRange"
+          class="skill-range"
+          name="projectWeightageRange"
+          min="0"
+          max="100"
+          value="0"
+        />
+        <span id="projectWeightageValue" class="skill-value">0</span>
+      </div>
+      <div class="skill-range-container">
+        <label for="educationalMarksRange" class="skill-label"
+          >Educational Marks:</label
+        >
+        <input
+          type="range"
+          id="educationalMarksRange"
+          class="skill-range"
+          name="educationalMarksRange"
+          min="0"
+          max="100"
+          value="0"
+        />
+        <span id="educationalMarksValue" class="skill-value">0</span>
+      </div>
+      <div class="skill-range-container">
+        <label for="branchRange" class="skill-label">Branch:</label>
+        <input
+          type="range"
+          id="branchRange"
+          class="skill-range"
+          name="branchRange"
+          min="0"
+          max="100"
+          value="0"
+        />
+        <span id="branchValue" class="skill-value">0</span>
+      </div>
+      <div class="skill-range-container">
+        <label for="collegeRange" class="skill-label">College:</label>
+        <input
+          type="range"
+          id="collegeRange"
+          class="skill-range"
+          name="collegeRange"
+          min="0"
+          max="100"
+          value="0"
+        />
+        <span id="collegeValue" class="skill-value">0</span>
+      </div>
+      <button class="result-btn" onclick="navigateToResult()">Result</button>
+    </div>
+
+    <script>
+      const ranges = document.querySelectorAll(".skill-range");
+
+      ranges.forEach((range) => {
+        const value = range.nextElementSibling;
+        value.textContent = range.value;
+
+        range.addEventListener("input", function () {
+          value.textContent = this.value;
+        });
+      });
+
+      function navigateToResult() {
+        const softSkillWeight = document.getElementById("softSkillRange").value;
+        const technicalSkillWeight = document.getElementById(
+          "technicalSkillRange"
+        ).value;
+        const projectWeightage = document.getElementById(
+          "projectWeightageRange"
+        ).value;
+        const educationalMarksWeight = document.getElementById(
+          "educationalMarksRange"
+        ).value;
+        const branch = document.getElementById("branchRange").value;
+        const college = document.getElementById("collegeRange").value;
+
+        // Redirect to result page with parameters
+        window.location.href = `/result?soft=${softSkillWeight}&tech=${technicalSkillWeight}&project=${projectWeightage}&edu=${educationalMarksWeight}&branch=${branch}&college=${college}`;
+      }
+
+      function resetValues() {
+        ranges.forEach((range) => {
+          range.value = 0;
+          range.nextElementSibling.textContent = 0;
+        });
+      }
+    </script>
+  </body>
+</html>
