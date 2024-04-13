@@ -1,5 +1,57 @@
 from flask import Flask,render_template,request
+from dotenv import load_dotenv  # Import the load_dotenv function
+import os
+import config
+from controller import*
+from flask_sqlalchemy import SQLAlchemy
+import logging
+from flask_migrate import Migrate
+
+
+# Load environment variables from .env file
+load_dotenv()
+logging.basicConfig(level=logging.INFO)
 app=Flask(__name__,template_folder='view/templates',static_folder='view/static')
+
+# Set configuration variables from config module
+app.config.from_object(config.Config)
+
+# Initialize SQLAlchemy
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+# db.init_app(app)
+from models import User
+# class User(db.Model):
+#     __tablename__ = 'users'
+
+#     user_id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.Text)
+#     email_id = db.Column(db.Text)
+#     phone = db.Column(db.Text)
+#     password = db.Column(db.Text)
+#     role = db.Column(db.Text)
+
+#     def __repr__(self):
+#         return f"<User(user_id={self.user_id}, name={self.name}, email_id={self.email_id}, phone={self.phone}, role={self.role})>"
+
+@app.cli.command()
+def add():
+    """Add test user."""
+    db.session.add(User(name='test'))
+    db.session.commit()
+
+
+
+# Check if the database connection is successful
+# @app.before_request
+# def check_db_connection():
+#     try:
+#         # Ping the database to check the connection
+#         db.engine.connect().close()
+#         logging.info("Connected to the database successfully!")
+#     except Exception as e:
+#         logging.error("Failed to connect to the database: %s", e)
+
 @app.route("/")
 def welcome():
     return render_template('index.html')
@@ -49,8 +101,6 @@ def shortlisting():
 def result():
     return render_template('result.html')
 
-
 if __name__ == '_main_':
     app.run(debug=True)
 
-from controller import*
