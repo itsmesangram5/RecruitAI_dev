@@ -1,0 +1,75 @@
+
+.homepagetxt {
+    background: transparent;
+    color: white;
+    font-size: 30px;
+    font-family: cursive;
+    font-weight: bolder;
+    border-bottom: 3px solid red;
+    transform: translateX(-50%);
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px 0; /* Adjusted padding to top and bottom */
+    margin-top: 6%;
+}
+.card {
+    width: 70%; /* Adjusted width to occupy 70% of the screen */
+    max-width: 600px; /* Added max-width to limit the card width */
+    background-color: #f4f9f4;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+}
+.card h5 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-left: 5px solid #dc3545;
+    text-align: left;
+    padding-left: 5px;
+}
+.card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.card .details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+.card .details span {
+    margin-right: 10px;
+}
+.card .btn {
+    
+    margin-top: 5px;
+    font-size: 17px;
+    
+}
+.btn{
+    width: 100%;
+}
+.details{
+    font-weight: bold;
+}
+.contain {
+    position: relative;
+    text-align: center;
+    color: rgb(255, 148, 148);
+    background: rgba(0, 0, 0, 0.5) url('../images/jobs5.jpg') no-repeat fixed; /* Fixed background image */
+    background-blend-mode: darken;
+    background-size: cover;
+    height: 740px;
+}
+
+.navbar{
+    position: fixed;
+    width: 100%;
+}
+

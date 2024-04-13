@@ -1,0 +1,25 @@
+.homepagetxt{
+    background: transparent;
+    color: white;
+   font-size: 30px;
+    font-family: cursive;
+    font-weight: bolder;
+    border-bottom: 3px solid red;
+    
+    transform: translateX(-50%);
+}
+.card {
+    position: relative;
+    padding: 20px;
+    width: 70%;
+}
+.card .btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: red;
+    border: 1px solid red;
+    padding: 8px 25px;
+    font-size: 17px;
+}
+

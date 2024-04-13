@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure viewport height coverage */
+}
+
+.container {
+  width: 800px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-top: 11%;
+}
+
+#newtxt {
+  position: absolute;
+  top: 22%; /* Move 50% from the top */
+  /* Move 50% from the left */
+  margin-bottom: 20px;
+  padding-left: 7px;
+  display: flex;
+}
+
+.skill-range-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.skill-label {
+  flex: 0 0 200px;
+}
+
+.skill-range {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #d6ccd1, #dc3545);
+  border-radius: 10px;
+  outline: none;
+  margin-right: 10px;
+}
+
+.skill-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 17px;
+  border: 2px solid black;
+  height: 17px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.skill-value {
+  font-size: 14px;
+  color: #000000;
+}
+
+.result-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 6px 15px;
+  background-color: #0d6efd;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 15%;
+}
+
+.result-btn:hover {
+  background-color:#0d4dff;
+  transition: 0.4s;
+}
+
+.reset-btn {
+  position: absolute;
+  right: 20px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+}
+
+.homepagetxt {
+  background: transparent;
+  color: white;
+  font-size: 30px;
+  font-family: cursive;
+  font-weight: bolder;
+  border-bottom: 3px solid red;
+  transform: translateX(-50%);
+}
+.dropdown-menu {
+  margin-left: 19%;
+}
+.contain {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5) url("../images/resultimgbg.jpg") no-repeat
+    fixed;
+  background-blend-mode: darken;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+#headingtxt {
+  border-left: 5px solid red;
+  padding-left: 6px;
+}
+.btn {
+  width: 140px;
+}
+
+#headingtxt2 {
+  padding: 6px;
+  width: 430px;
+  border: 1px solid red;
+  border-radius: 5px;
+  height: 37.6px;
+  font-size: 17px;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  margin-left: 10px;
+}
