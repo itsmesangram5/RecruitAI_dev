@@ -1,6 +1,7 @@
 # models.py
 
 from app import db
+from sqlalchemy import LargeBinary
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -41,8 +42,10 @@ class Applicant(db.Model):
     
     # Define one-to-one relationship with User table
     user = db.relationship('User', backref=db.backref('applicant', uselist=False))
+
     def __repr__(self):
         return f"<Applicant(applicant_id={self.applicant_id}, user_id={self.user_id})>"
+
 
 class Resume(db.Model):
     __tablename__ = 'resumes'
@@ -73,6 +76,7 @@ class Resume(db.Model):
     p_tech3 = db.Column(db.Text)
     tech_skills = db.Column(db.Text)
     soft_skills = db.Column(db.Text)
+
     def __repr__(self):
         return f"<Resume(resume_id={self.resume_id}, applicant_id={self.applicant_id}, resume_name={self.resume_name})>"
     
@@ -86,6 +90,7 @@ class Recruiter(db.Model):
 
     def __repr__(self):
         return f"<Recruiter(recruiter_id={self.recruiter_id}, user_id={self.user_id})>"
+
 
 class JobPosting(db.Model):
     __tablename__ = 'job_postings'
@@ -108,6 +113,7 @@ class JobPosting(db.Model):
     positions = db.Column(db.Integer)
     last_date_to_apply = db.Column(db.Date)
     company_name = db.Column(db.Text)
+    job_desripation= db.Column(db.Text)
 
     def __repr__(self):
         return f"<JobPosting(job_id={self.job_id}, recruiter_id={self.recruiter_id}, job_title={self.job_title}, company_name={self.company_name})>"

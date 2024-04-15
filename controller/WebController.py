@@ -38,7 +38,7 @@ def recruiter_home():
 def postjob():
     return render_template('postedjobs.html')
 
-@app.route('/jobdescriptionform')
+@app.route('/jobdescriptionform_view')
 def jobdescriptionform():
     return render_template('jobdescriptionform.html')
 
