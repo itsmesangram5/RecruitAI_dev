@@ -12,7 +12,14 @@ class signup_model():
     phone = data.get('phone')
     role = data.get('role')
 
-    user = User(name=name, email_id=email, password=password, phone=phone, role=role)  # Using 'email_id' instead of 'email'
+    # Check if a user with the same email or phone number already exists
+    existing_user = User.query.filter((User.email_id == email) | (User.phone == phone)).first()
+    if existing_user:
+        # If a user with the same email or phone number already exists, return an error response
+        return jsonify({'error': 'User already exists. Please login with existing credentials.'}), 400
+
+    # If no existing user found, proceed to create a new user
+    user = User(name=name, email_id=email, password=password, phone=phone, role=role)
     db.session.add(user)
     db.session.commit()
 
