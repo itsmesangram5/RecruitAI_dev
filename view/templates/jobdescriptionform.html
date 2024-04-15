@@ -135,7 +135,18 @@
         </div>
         <div class="right-part">
             <form class="row g-3">
-                
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Enter Company Name">
+                </div>
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Job Title</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Enter job title">
+                </div>
+                <div >
+  <label for="exampleFormControlTextarea1" class="form-label">Job Description Overview</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Overview of job description"></textarea>
+</div>
                 <div class="col-md-6">
                     <label for="inputPassword4" class="form-label">Branch</label>
                     <input type="text" class="form-control" id="inputPassword4" placeholder="Engineering Branch" >
@@ -167,6 +178,10 @@
                     <input type="text" class="form-control" id="inputAddress2" placeholder="Technical Experience">
                 </div>
                 <div class="col-12">
+                    <label for="inputAddress2" class="form-label">Required Project tech of applicant</label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="Enter project tech">
+                </div>
+                <div class="col-12">
                     <label for="inputAddress2" class="form-label">Technical Skills</label>
                     <input type="text" class="form-control" id="inputAddress2" placeholder="Technical Skills">
                 </div>
@@ -174,18 +189,18 @@
                     <label for="inputAddress2" class="form-label">Soft Skills</label>
                     <input type="text" class="form-control" id="inputAddress2" placeholder="Required soft skill for job role">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label for="inputCity" class="form-label">Expected CTC</label>
                     <input type="text" class="form-control" placeholder="INR.">
                 </div>
                 <div class="col-md-4">
                     <label for="inputState" class="form-label">Position</label>
-                    <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>Java Developer</option>
-                        <option>Web Developer</option>
-                        <option>Data Analyst</option>
-                    </select>
+                    <input type="number" placeholder="Enter No. Position">
+                   
+                </div>
+                <div class="col-md-4">
+                    <label for="inputState" class="form-label">Last date to apply</label>
+                    <input type="date">
                 </div>
                 <div class="input-group">
                     <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
