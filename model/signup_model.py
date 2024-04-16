@@ -37,8 +37,8 @@ class signup_model():
     }
 
     if role == 'Applicant':
-        return jsonify(response), 201, {'Location': '/Applicant.html'}
+        return jsonify(response), 201
     elif role == 'Recruiter':
-        return jsonify(response), 201, {'Location': '/Recruiter.html'}
+        return jsonify(response), 201
     else:
         return jsonify({'error': 'Invalid role'}), 400

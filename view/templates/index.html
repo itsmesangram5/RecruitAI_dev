@@ -120,25 +120,42 @@
 
     <!-- JavaScript to open/close sidebar -->
     <script>
-      function toggleNav() {
-        var sidenav = document.getElementById("mySidenav");
-        if (sidenav.style.width === "250px") {
-          sidenav.style.width = "0";
-        } else {
-          sidenav.style.width = "250px";
-        }
-      }
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('.login_form form');
 
-      // Close the sidebar when clicking outside of it
-      window.onclick = function (event) {
-        var sidenav = document.getElementById("mySidenav");
-        if (
-          event.target !== sidenav &&
-          event.target.closest(".openbtn") === null
-        ) {
-          sidenav.style.width = "0";
-        }
-      };
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const email = form.querySelector('input[type="email"]').value;
+                const password = form.querySelector('input[type="password"]').value;
+
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                });
+
+                const responseData = await response.json();
+
+                if (response.ok) {
+                    // Login successful, handle navigation based on role
+                    const role = responseData.role;
+                    if (role === 'Applicant') {
+                        window.location.href = '/applicant';
+                    } else {
+                        window.location.href = '/recruiter';
+                    }
+                } else {
+                    // Login failed, display error message
+                    alert(responseData.message);
+                }
+            });
+        });
     </script>
   </body>
 </html>
