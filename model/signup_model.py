@@ -35,3 +35,4 @@ class signup_model():
         return jsonify(response), 201, {'Location': '/Recruiter.html'}
     else:
         return jsonify({'error': 'Invalid role'}), 400
+
