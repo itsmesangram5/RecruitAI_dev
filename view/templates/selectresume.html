@@ -48,19 +48,17 @@
         
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Sort By</a>
-                      </li>
+                      <li style="padding-top: 5px;">
+                               <span id="sorttxt">SortBy</span>
+                    </li>
                       
                       <li class="nav-item dropdown">
-                        <a style="border: 1px solid black; border-radius: 5px;" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Select
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Date</a></li>
-                          <li><a class="dropdown-item" href="#">Time</a></li>
-                          
-                        </ul>
+                      
+                        <select id="sortby" class="btn btn-outline-success">
+                            <option selected>--Select--</option>
+                            <option>Date</option>
+                            <option>Name</option>
+                        </select>
                       </li>
                       
                     </ul>

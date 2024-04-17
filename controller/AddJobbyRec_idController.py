@@ -1,10 +1,10 @@
 from app import app
-from model.jobdescriptionform_model import jobdescriptionform_model 
+from model.addjobbyrec_id_model import jobdescriptionform_model 
 from flask import request
 
 obj = jobdescriptionform_model()
 
-@app.route('/jobdescriptionform', methods=['POST'])
+@app.route('/addjobbyrec_id', methods=['POST'])
 def jobdescriptionform_controller():
     if request.headers.get('Authorization'):
         jwt_token = request.headers.get('Authorization').split()[1]
