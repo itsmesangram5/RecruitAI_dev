@@ -145,6 +145,11 @@
                 if (response.ok) {
                     // Login successful, handle navigation based on role
                     const role = responseData.role;
+                    // Store data in sessionStorage
+                    sessionStorage.setItem("userData", JSON.stringify(responseData));
+                    // Store token in sessionStorage
+                    sessionStorage.setItem("tokenData", responseData.token);
+                    // Navigate to respective page based on role
                     if (role === 'Applicant') {
                         window.location.href = '/applicant';
                     } else {
