@@ -103,6 +103,15 @@
                 tooltip.style.display = "none";
             }
         }
+
+        const userData = sessionStorage.getItem("userData");
+        if (userData) {
+            // Parse user data from JSON
+            const user = JSON.parse(userData);
+            console.log(user.name);
+            // Update username in the navbar
+            //document.getElementById("username").textContent = user.name;
+        }
     </script>
 </body>
 </html>
