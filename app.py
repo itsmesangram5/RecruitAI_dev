@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask
 from dotenv import load_dotenv  # Import the load_dotenv function
 import config
 from flask_sqlalchemy import SQLAlchemy
