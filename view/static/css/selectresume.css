@@ -27,3 +27,16 @@
     border: 1px solid rgb(0, 0, 0);
     margin-left:65%;
 }
+
+
+#sortby {
+    background-color: black;
+    color: white;
+}
+
+#sorttxt
+{   font-size:20px ;
+    margin-right: 20px;
+    margin-top: 4px;
+    font-weight: bold;
+}
