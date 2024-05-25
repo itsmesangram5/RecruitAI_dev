@@ -127,6 +127,41 @@ class JobApplication(db.Model):
     applicant_id = db.Column(db.Integer, db.ForeignKey('applicants.applicant_id'))
     resume_id = db.Column(db.Integer, db.ForeignKey('resumes.resume_id'))
     applied_date = db.Column(db.Date)
+    status = db.Column(db.Text)
 
     def __repr__(self):
-        return f"<JobApplication(job_application_id={self.job_application_id}, job_id={self.job_id}, recruiter_id={self.recruiter_id}, applicant_id={self.applicant_id}, resume_id={self.resume_id}, applied_date={self.applied_date})>"
+        return f"<JobApplication(job_application_id={self.job_application_id}, job_id={self.job_id}, recruiter_id={self.recruiter_id}, applicant_id={self.applicant_id}, resume_id={self.resume_id}, applied_date={self.applied_date},status={self.status})>"
+
+class Score(db.Model):
+    __tablename__ = 'scores'
+
+    marks_id = db.Column(db.Integer, primary_key=True)
+    job_application_id = db.Column(db.Integer, db.ForeignKey('job_applications.job_application_id'))
+
+    education = db.Column(db.Numeric(5, 2))
+    branch = db.Column(db.Numeric(5, 2))
+    clg = db.Column(db.Numeric(5, 2))
+    experience = db.Column(db.Numeric(5, 2))
+    project = db.Column(db.Numeric(5, 2))
+    soft_skill = db.Column(db.Numeric(5, 2))
+    overall = db.Column(db.Numeric(5, 2))
+    tech_skill = db.Column(db.Numeric(5, 2))
+
+    def __repr__(self):
+        return f"<Score(marks_id={self.marks_id}, job_application_id={self.job_application_id}, overall={self.overall})>"
+
+class Ranking(db.Model):
+    __tablename__ = 'rankings'
+
+    ranking_id = db.Column(db.Integer, primary_key=True)
+    job_id = db.Column(db.Integer, db.ForeignKey('job_postings.job_id'))
+    applicant_id = db.Column(db.Integer, db.ForeignKey('applicants.applicant_id'))
+    resume_id = db.Column(db.Integer, db.ForeignKey('resumes.resume_id'))
+    rank = db.Column(db.Integer)
+
+    job_posting = db.relationship('JobPosting', backref=db.backref('rankings', lazy=True))
+    applicant = db.relationship('Applicant', backref=db.backref('rankings', lazy=True))
+    resume = db.relationship('Resume', backref=db.backref('rankings', lazy=True))
+
+    def __repr__(self):
+        return f"<Ranking(ranking_id={self.ranking_id}, job_id={self.job_id}, applicant_id={self.applicant_id}, resume_id={self.resume_id}, rank={self.rank})>"
