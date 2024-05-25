@@ -6,6 +6,81 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha3154-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT15bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha3154-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/76051b1a44.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/uploadresume.css')}}" />
+    <style>
+      .cards{
+        width: 70%;
+        height: 120px;
+        background-color: white;
+        border-radius: 10px;
+        padding-left: 20px;
+        padding-top: 10px;
+        margin-top: 20px;
+
+      }
+      #btn{
+        border-radius: 5px;
+        width: 90px;
+        border: none;
+        background-color: #dc3545;
+        padding: 6px;
+        font-weight: 600;
+        color: white;
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      #btn2{
+        border-radius: 5px;
+        width: 90px;
+        border: none;
+        background-color: #0d6efd;
+        padding: 6px;
+        font-weight: 600;
+        color: white;
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      #btn3{
+        border-radius: 5px;
+        width: 90px;
+        border: none;
+        background-color: #a7acb1;
+        padding: 6px;
+        font-weight: 600;
+        color: white;
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .tophead{
+        margin-left: 27%;
+        margin-top: 2%;
+        display: flex;
+      }
+      .file-input-wrapper {
+            position: relative;
+            margin-left: 300px;
+        }
+        .file-input {
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .file-input-label {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 6px 13px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .file-name {
+            margin-left: 10px;
+            color: white;
+            padding-right: 10px;
+        }
+     
+    </style>
     <title>Document</title>
 </head>
 <body style="background-color: rgb(0, 0, 0);">
@@ -15,40 +90,93 @@
         </a>
         <a style="font-weight: bold; font-size: 25px; letter-spacing: 0.1cap;" class="navbar-brand">Your resumes </a>
         <ul class="nav nav-pills">
+         
           <li class="nav-item dropdown">
-            <a style="font-size: 20px;color: whitesmoke;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">   
-                <i style="padding-right: 4px;" class="fa-solid fa-user-tie"></i> Username
-            </a>
+            <a style="font-size: 20px;color: whitesmoke;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">   <i style="padding-right: 4px;" class="fa-solid fa-user-tie"></i> 
+                Username</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/applicant">Home</a></li>
               <li><a class="dropdown-item" href="/applications">Applications</a></li>
               <li><a class="dropdown-item" href="/jobs">Jobs</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#scrollspyHeading5">
-                  <i style="padding-right: 4px;" class="fa-solid fa-right-from-bracket"></i>Logout
-              </a></li>
+              <li><a  class="dropdown-item" href="#scrollspyHeading5"><i style="padding-right: 4px;" class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
             </ul>
           </li>
         </ul>
       </nav>
-    <div style="display: flex;">
-        <h2 style="color: whitesmoke; padding-left: 20%;padding-top: 10px;">Resumes</h2>
-        <div class="upload-btn-wrapper">
-            <button type="button" class="btn1" onclick="uploadResume()">Upload Resume</button>
-            <input type="file" name="resume" id="resumeInput" />
-        </div>
-    </div>
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example15" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-dark p-3 rounded-15" tabindex="0">
+<div class="tophead">
+  <h3 style='color: white;padding-right: 15px;'> Resumes</h3>
+  <div class="file-input-wrapper">
+    <label class="file-input-label" for="fileInput">Choose File</label>
+    <input id="resumeInput" class="file-input" type="file" onchange="updateFileName()">
+    <span id="fileName" class="file-name">No file chosen</span>
+</div>
+  <div ><button id="btn2" onclick="uploadResume()">Upload</button></div>
+</div>
+      <div  data-bs-spy="scroll" data-bs-target="#navbar-example15" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-dark p-3 rounded-15" tabindex="0">
         <div class="content">
-            <div style="padding-left: 15%;">
-                <!-- Example resume cards -->
-                <!-- ... (cards go here) ... -->
+            <div style="padding-left: 25%;">
+               
+                <div class="cards">
+                  <h4>User resume name</h4>
+                  <p>With supporting text below as a natural lead-in to additional content</p>
+                  <button id="btn">Delete</button>
+                </div>
+                <div class="cards">
+                  <h4>User resume name</h4>
+                  <p>With supporting text below as a natural lead-in to additional content</p>
+                  <button id="btn">Delete</button>
+                </div>
+                <div class="cards">
+                  <h4>User resume name</h4>
+                  <p>With supporting text below as a natural lead-in to additional content</p>
+                  <button id="btn">Delete</button>
+                </div>
+                <div class="cards">
+                  <h4>User resume name</h4>
+                  <p>With supporting text below as a natural lead-in to additional content</p>
+                  <button id="btn">Delete</button>
+                </div>
+                <div class="cards">
+                  <h4>User resume name</h4>
+                  <p>With supporting text below as a natural lead-in to additional content</p>
+                  <button id="btn">Delete</button>
+                </div>
             </div>
         </div>
-    </div>
+        
+      </div>
+   
     <script>
-        // Function to upload the resume
-        function uploadResume() {
+        // Show dropdown menu
+        // Show tooltip box
+        // Toggle tooltip box
+        function toggleTooltip() {
+            var tooltip = document.getElementById("tooltipBox");
+            if (tooltip.style.display === "block") {
+                tooltip.style.display = "none";
+            } else {
+                tooltip.style.display = "block";
+            }
+        }
+        
+        // Close tooltip box if clicked outside
+        window.onclick = function(event) {
+            var tooltip = document.getElementById("tooltipBox");
+            if (event.target !== tooltip && event.target.closest('.openbtn') === null) {
+                tooltip.style.display = "none";
+            }
+        }
+
+        // Display the name of the uploaded file
+  const fileInput = document.querySelector('input[type=file]');
+  const fileNameDisplay = document.querySelector('.file-name');
+
+  fileInput.addEventListener('change', function() {
+    fileNameDisplay.textContent = this.files[0].name;
+  });
+
+  function uploadResume() {
             const fileInput = document.getElementById('resumeInput');
             const file = fileInput.files[0];
             if (!file) {
@@ -65,7 +193,7 @@
                 return;
             }
 
-            fetch('http://127.0.0.1:5000/upload', {
+            fetch('/upload', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -88,3 +216,4 @@
     </script>
 </body>
 </html>
+

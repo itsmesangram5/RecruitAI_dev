@@ -2,6 +2,7 @@ from app import app , db
 from model.getallresumesbyApp_id_model import resume_model
 from flask import request , jsonify
 import os
+from utils.GenerateToken import extract_user_id_from_token
 from config import Config
 from models import Applicant , Resume 
 from werkzeug.utils import secure_filename
@@ -9,14 +10,14 @@ from model.deleteresumebyresume_id_model import DeleteResumeModel
 from utils.GenerateToken import extract_user_id_from_token
 
 app.config.from_object(Config)
-obj = resume_model() 
 
+obj = resume_model() 
 @app.route('/getallresumesbyApp_id', methods=['GET'])
 def resume_controller():
     return obj.get_all_resumes(request)
 
-
-obj = DeleteResumeModel()
+from model.deleteresumebyresume_id_model import DeleteResumeModel
+obj1 = DeleteResumeModel()
 
 @app.route('/deleteresumebyresume_id', methods=['DELETE'])
 def delete_resume_controller():
@@ -40,7 +41,7 @@ def delete_resume_controller():
     resume_id = data['resume_id']
 
     # Deleting the resume
-    result = obj.delete_resume(user_id, resume_id)
+    result = obj1.delete_resume(user_id, resume_id)
 
     if result:
         return jsonify({"status": "success", "message": "Resume deleted successfully."})
