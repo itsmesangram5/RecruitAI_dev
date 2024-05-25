@@ -304,4 +304,4 @@ class ProcessResume:
             db.session.commit()
             return jsonify({"message": "Job processed successfully."}), 200
         return jsonify({"Error": "Something Went wrong."}), 500
-
+    

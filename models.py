@@ -135,7 +135,7 @@ class JobApplication(db.Model):
 class Score(db.Model):
     __tablename__ = 'scores'
 
-    marks_id = db.Column(db.Integer, primary_key=True)
+    score_id = db.Column(db.Integer, primary_key=True)
     job_application_id = db.Column(db.Integer, db.ForeignKey('job_applications.job_application_id'))
 
     education = db.Column(db.Numeric(5, 2))
