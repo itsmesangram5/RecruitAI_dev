@@ -5,17 +5,13 @@ from app import app
 from utils.GenerateToken import extract_user_id_from_token
 from model.getjobbyrec_id_model import PostJobModel
 from model.getalljobsbyApp_id_model import ViewJobModel
-from model.getalljobsbyApp_id_model import ViewJobModel
 from model.deletejobbyjob_id_model import DeleteJobModel
 from model.addjobbyrec_id_model import jobdescriptionform_model 
 
 
-obj = jobdescriptionform_model()
-obj = ViewJobModel()
-obj = ViewJobModel()
-obj = PostJobModel()
-obj = DeleteJobModel()
 
+
+obj4 = DeleteJobModel()
 @app.route('/deletejobbyjob_id', methods=['DELETE'])
 def delete_job_controller():
     # Extracting user_id from the token
@@ -38,7 +34,7 @@ def delete_job_controller():
     job_id = data['job_id']
 
     # Deleting the job
-    result = obj.delete_job(user_id, job_id)
+    result = obj4.delete_job(user_id, job_id)
 
     if result:
         return jsonify({"status": "success", "message": "Job deleted successfully."})
@@ -46,8 +42,7 @@ def delete_job_controller():
         return jsonify({"status": "error", "message": "Job not found or could not be deleted."}), 404
 
 
-
-
+obj3 = PostJobModel()
 @app.route('/getjobbyrec_id', methods=['GET'])
 def postjob_controller():
     auth_header = request.headers.get('Authorization')
@@ -59,13 +54,13 @@ def postjob_controller():
     if user_id is None:
         return jsonify({"error": "Invalid or expired token"}), 401
 
-    result = obj.get_all_posts(user_id)
+    result = obj3.get_all_posts(user_id)
     if result is None:
         return jsonify({"error": "No job postings found for this recruiter"}), 404
 
     return jsonify({"PostJob": result})
 
-
+obj2 = ViewJobModel()
 @app.route('/getalljobsbyapp_id', methods=['GET'])
 def view_jobs_controller():
     # Extract token from Authorization header
@@ -85,7 +80,7 @@ def view_jobs_controller():
 
     try:
         # Retrieve job postings for the user
-        jobs = obj.get_all_jobs(user_id)
+        jobs = obj2.get_all_jobs(user_id)
 
         # Handle case where no job postings found
         if jobs is None:
@@ -98,11 +93,11 @@ def view_jobs_controller():
         # Handle unexpected errors
         return jsonify({"error": str(e)}), 500
     
-    
+obj1 = jobdescriptionform_model()
 @app.route('/addjobbyrec_id', methods=['POST'])
 def jobdescriptionform_controller():
     if request.headers.get('Authorization'):
         jwt_token = request.headers.get('Authorization').split()[1]
-        return obj.jobdescriptionform(jwt_token, request.json)
+        return obj1.jobdescriptionform(jwt_token, request.json)
     else:
         return jsonify({"error": "Authorization header not provided"}), 401

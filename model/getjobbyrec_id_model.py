@@ -32,7 +32,7 @@ class PostJobModel:
                     "soft_skills": job.soft_skills,
                     "ctc": float(job.ctc),
                     "positions": job.positions,
-                    "last_date_to_apply": job.last_date_to_apply.isoformat(),
+                    "last_date_to_apply": job.last_date_to_apply,
                     "company_name": job.company_name,
                     "job_description": job.job_desripation  # Typo corrected here
                 })
