@@ -16,7 +16,6 @@
         padding-left: 20px;
         padding-top: 10px;
         margin-top: 20px;
-
       }
       #btn{
         border-radius: 5px;
@@ -54,166 +53,219 @@
         display: flex;
       }
       .file-input-wrapper {
-            position: relative;
-            margin-left: 300px;
-        }
-        .file-input {
-            opacity: 0;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-        .file-input-label {
-            display: inline-block;
-            background-color: #007BFF;
-            color: white;
-            padding: 6px 13px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .file-name {
-            margin-left: 10px;
-            color: white;
-            padding-right: 10px;
-        }
-     
+        position: relative;
+        margin-left: 300px;
+      }
+      .file-input {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+      .file-input-label {
+        display: inline-block;
+        background-color: #007BFF;
+        color: white;
+        padding: 6px 13px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .file-name {
+        margin-left: 10px;
+        color: white;
+        padding-right: 10px;
+      }
     </style>
     <title>Document</title>
 </head>
 <body style="background-color: rgb(0, 0, 0);">
-    <nav  id="navbar-example15" class="navbar sticky-top bg-dark border-bottom border-body" data-bs-theme="dark">
-        <a class="navbar-brand" href="#">       
-            <span style="font-size: 30px; margin-left: 20px;" class="homepagetxt">RecruitAI</span> 
-        </a>
-        <a style="font-weight: bold; font-size: 25px; letter-spacing: 0.1cap;" class="navbar-brand">Your resumes </a>
-        <ul class="nav nav-pills">
-         
-          <li class="nav-item dropdown">
-            <a style="font-size: 20px;color: whitesmoke;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">   <i style="padding-right: 4px;" class="fa-solid fa-user-tie"></i> 
-                Username</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/applicant">Home</a></li>
-              <li><a class="dropdown-item" href="/applications">Applications</a></li>
-              <li><a class="dropdown-item" href="/jobs">Jobs</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a  class="dropdown-item" href="#scrollspyHeading5"><i style="padding-right: 4px;" class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
-            </ul>
-          </li>
+  <nav id="navbar-example15" class="navbar sticky-top bg-dark border-bottom border-body" data-bs-theme="dark">
+    <a class="navbar-brand" href="#">
+      <span style="font-size: 30px; margin-left: 20px;" class="homepagetxt">RecruitAI</span>
+    </a>
+    <a style="font-weight: bold; font-size: 25px; letter-spacing: 0.1cap;" class="navbar-brand">Your resumes</a>
+    <ul class="nav nav-pills">
+      <li class="nav-item dropdown">
+        <a style="font-size: 20px;color: whitesmoke;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i style="padding-right: 4px;" class="fa-solid fa-user-tie"></i> Username</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/applicant">Home</a></li>
+          <li><a class="dropdown-item" href="/applications">Applications</a></li>
+          <li><a class="dropdown-item" href="/jobs">Jobs</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#scrollspyHeading5"><i style="padding-right: 4px;" class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
         </ul>
-      </nav>
-<div class="tophead">
-  <h3 style='color: white;padding-right: 15px;'> Resumes</h3>
-  <div class="file-input-wrapper">
-    <label class="file-input-label" for="fileInput">Choose File</label>
-    <input id="resumeInput" class="file-input" type="file" onchange="updateFileName()">
-    <span id="fileName" class="file-name">No file chosen</span>
-</div>
-  <div ><button id="btn2" onclick="uploadResume()">Upload</button></div>
-</div>
-      <div  data-bs-spy="scroll" data-bs-target="#navbar-example15" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-dark p-3 rounded-15" tabindex="0">
-        <div class="content">
-            <div style="padding-left: 25%;">
-               
-                <div class="cards">
-                  <h4>User resume name</h4>
-                  <p>With supporting text below as a natural lead-in to additional content</p>
-                  <button id="btn">Delete</button>
-                </div>
-                <div class="cards">
-                  <h4>User resume name</h4>
-                  <p>With supporting text below as a natural lead-in to additional content</p>
-                  <button id="btn">Delete</button>
-                </div>
-                <div class="cards">
-                  <h4>User resume name</h4>
-                  <p>With supporting text below as a natural lead-in to additional content</p>
-                  <button id="btn">Delete</button>
-                </div>
-                <div class="cards">
-                  <h4>User resume name</h4>
-                  <p>With supporting text below as a natural lead-in to additional content</p>
-                  <button id="btn">Delete</button>
-                </div>
-                <div class="cards">
-                  <h4>User resume name</h4>
-                  <p>With supporting text below as a natural lead-in to additional content</p>
-                  <button id="btn">Delete</button>
-                </div>
-            </div>
-        </div>
-        
-      </div>
-   
-    <script>
-        // Show dropdown menu
-        // Show tooltip box
-        // Toggle tooltip box
-        function toggleTooltip() {
-            var tooltip = document.getElementById("tooltipBox");
-            if (tooltip.style.display === "block") {
-                tooltip.style.display = "none";
-            } else {
-                tooltip.style.display = "block";
-            }
+      </li>
+    </ul>
+  </nav>
+  <div class="tophead">
+    <h3 style='color: white;padding-right: 15px;'> Resumes</h3>
+    <div class="file-input-wrapper">
+      <label class="file-input-label" for="fileInput">Choose File</label>
+      <input id="resumeInput" class="file-input" type="file" onchange="updateFileName()">
+      <span id="fileName" class="file-name">No file chosen</span>
+    </div>
+    <div><button id="btn2" onclick="uploadResume()">Upload</button></div>
+  </div>
+  <div data-bs-spy="scroll" data-bs-target="#navbar-example15" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-dark p-3 rounded-15" tabindex="0">
+    <div class="content" id="resumesContainer" style="padding-left: 25%;"></div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchResumes();
+    });
+
+    function fetchResumes() {
+      const token = sessionStorage.getItem('tokenData');
+      if (!token) {
+        alert('Authorization token is missing.');
+        return;
+      }
+
+      fetch('/getallresumesbyApp_id', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`
         }
-        
-        // Close tooltip box if clicked outside
-        window.onclick = function(event) {
-            var tooltip = document.getElementById("tooltipBox");
-            if (event.target !== tooltip && event.target.closest('.openbtn') === null) {
-                tooltip.style.display = "none";
-            }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.resumes) {
+          displayResumes(data.resumes);
+        } else {
+          alert(`Error: ${data.message}`);
         }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while fetching resumes.');
+      });
+    }
 
-        // Display the name of the uploaded file
-  const fileInput = document.querySelector('input[type=file]');
-  const fileNameDisplay = document.querySelector('.file-name');
+    function displayResumes(resumes) {
+      const resumesContainer = document.getElementById('resumesContainer');
+      resumesContainer.innerHTML = '';
+      resumes.forEach(resume => {
+        const resumeCard = document.createElement('div');
+        resumeCard.className = 'cards';
+        resumeCard.innerHTML = `
+          <h4>${resume.resume_name}</h4>
+          <p>With supporting text below as a natural lead-in to additional content</p>
+          <button id="btn" onclick="deleteResume(${resume.resume_id})">Delete</button>
+          <button id="btn3" onclick="viewResume(${resume.resume_id})">View</button>
+        `;
+        resumesContainer.appendChild(resumeCard);
+      });
+    }
 
-  fileInput.addEventListener('change', function() {
-    fileNameDisplay.textContent = this.files[0].name;
-  });
+    function updateFileName() {
+      const input = document.getElementById('resumeInput');
+      const fileName = input.files[0] ? input.files[0].name : 'No file chosen';
+      document.getElementById('fileName').innerText = fileName;
+    }
 
-  function uploadResume() {
-            const fileInput = document.getElementById('resumeInput');
-            const file = fileInput.files[0];
-            if (!file) {
-                alert('Please select a file to upload.');
-                return;
-            }
-            
-            const formData = new FormData();
-            formData.append('file', file);
-            
-            const token = sessionStorage.getItem('tokenData');
-            if (!token) {
-                alert('Authorization token is missing.');
-                return;
-            }
+    function uploadResume() {
+      const input = document.getElementById('resumeInput');
+      const file = input.files[0];
+      if (!file) {
+        alert('Please choose a file to upload.');
+        return;
+      }
 
-            fetch('/upload', {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                },
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    alert(`Error: ${data.error}`);
-                } else {
-                    alert(`Success: ${data.message}`);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while uploading the file.');
-            });
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const token = sessionStorage.getItem('tokenData');
+      if (!token) {
+        alert('Authorization token is missing.');
+        return;
+      }
+
+      fetch('/upload', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.resumes) {
+          displayResumes(data.resumes);
+          alert(data.message);
+        } else {
+          alert(`Error: ${data.message}`);
         }
-    </script>
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while uploading the resume.');
+      });
+    }
+
+    function deleteResume(resume_id) {
+      const token = sessionStorage.getItem('tokenData');
+      if (!token) {
+        alert('Authorization token is missing.');
+        return;
+      }
+
+      fetch('/deleteresumebyresume_id', {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ resume_id })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'success') {
+          fetchResumes();
+          alert(data.message);
+        } else {
+          alert(`Error: ${data.message}`);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while deleting the resume.');
+      });
+    }
+
+    function viewResume(resume_id) {
+      const token = sessionStorage.getItem('tokenData');
+      if (!token) {
+        alert('Authorization token is missing.');
+        return;
+      }
+
+      fetch(`/viewresume/${resume_id}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        if (response.status === 200) {
+          return response.blob();
+        } else {
+          return response.json().then(data => {
+            throw new Error(data.message);
+          });
+        }
+      })
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        window.open(url);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while viewing the resume.');
+      });
+    }
+  </script>
 </body>
 </html>
-
