@@ -87,4 +87,10 @@ def upload_file():
     else:
         return jsonify({'error': 'File is not a PDF'}), 400
 
+from Service.AddScore import AddScore
+add_score_instance = AddScore()
 
+@app.route('/add_score', methods=['GET'])
+def add_score():
+    response, status_code = add_score_instance.add_score()
+    return jsonify(response), status_code

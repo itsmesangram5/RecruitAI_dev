@@ -3,6 +3,7 @@ from langchain_community.document_loaders import PyPDFLoader
 import ast
 import os 
 import re
+import shutil
 from flask import jsonify
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -70,6 +71,8 @@ class ProcessResume:
     def process_resumes(self):
         # Define the path to the resumes folder
         resumes_folder = os.path.join(os.getcwd(), "resumes")
+        processed_folder = os.path.join(os.getcwd(), "processed_resumes")
+        os.makedirs(processed_folder, exist_ok=True)
 
         # Get the list of all resume files in the resumes folder
         resume_files = [f for f in os.listdir(resumes_folder) if f.endswith('.pdf')]
@@ -302,6 +305,8 @@ class ProcessResume:
             resume.tech_skills = tech_skills
             resume.soft_skills = soft_skills
             db.session.commit()
+            processed_resume_path = os.path.join(processed_folder, resume_file)
+            shutil.move(resume_path, processed_resume_path)
             return jsonify({"message": "Job processed successfully."}), 200
         return jsonify({"Error": "Something Went wrong."}), 500
     

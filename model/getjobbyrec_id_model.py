@@ -41,3 +41,28 @@ class PostJobModel:
         except sqlalchemy.exc.SQLAlchemyError as e:
             print(f"Database error: {e}")
             return None
+        
+    def get_all_postsList(self, user_id):
+        try:
+            recruiter = db.session.query(Recruiter).filter_by(user_id=user_id).first()
+            if not recruiter:
+                return None
+
+            # Fetch job postings associated with the recruiter
+            job_postings = db.session.query(JobPosting).filter_by(recruiter_id=recruiter.recruiter_id).all()
+
+            # Check if job_postings is empty or None
+            if not job_postings:
+                return None
+
+            result = []
+            for job in job_postings:
+                result.append({
+                    "job_title": job.job_title,
+                    "job_id": job.job_id
+                })
+
+            return result
+        except sqlalchemy.exc.SQLAlchemyError as e:
+            print(f"Database error: {e}")
+            return None

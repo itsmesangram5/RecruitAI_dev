@@ -129,8 +129,14 @@ class JobApplication(db.Model):
     applied_date = db.Column(db.Date)
     status = db.Column(db.Text)
 
+    # Define relationships
+    job_posting = db.relationship('JobPosting', backref=db.backref('job_applications', lazy=True))
+    recruiter = db.relationship('Recruiter', backref=db.backref('job_applications', lazy=True))
+    applicant = db.relationship('Applicant', backref=db.backref('job_applications', lazy=True))
+    resume = db.relationship('Resume', backref=db.backref('job_applications', lazy=True))
+
     def __repr__(self):
-        return f"<JobApplication(job_application_id={self.job_application_id}, job_id={self.job_id}, recruiter_id={self.recruiter_id}, applicant_id={self.applicant_id}, resume_id={self.resume_id}, applied_date={self.applied_date},status={self.status})>"
+        return f"<JobApplication(job_application_id={self.job_application_id}, job_id={self.job_id}, recruiter_id={self.recruiter_id}, applicant_id={self.applicant_id}, resume_id={self.resume_id}, applied_date={self.applied_date}, status={self.status})>"
 
 class Score(db.Model):
     __tablename__ = 'scores'
@@ -146,7 +152,9 @@ class Score(db.Model):
     soft_skill = db.Column(db.Numeric(5, 2))
     overall = db.Column(db.Numeric(5, 2))
     tech_skill = db.Column(db.Numeric(5, 2))
-
+    
+    job_application = db.relationship('JobApplication', backref=db.backref('scores', lazy=True))
+    
     def __repr__(self):
         return f"<Score(marks_id={self.marks_id}, job_application_id={self.job_application_id}, overall={self.overall})>"
 
@@ -162,6 +170,6 @@ class Ranking(db.Model):
     job_posting = db.relationship('JobPosting', backref=db.backref('rankings', lazy=True))
     applicant = db.relationship('Applicant', backref=db.backref('rankings', lazy=True))
     resume = db.relationship('Resume', backref=db.backref('rankings', lazy=True))
-
+    
     def __repr__(self):
         return f"<Ranking(ranking_id={self.ranking_id}, job_id={self.job_id}, applicant_id={self.applicant_id}, resume_id={self.resume_id}, rank={self.rank})>"

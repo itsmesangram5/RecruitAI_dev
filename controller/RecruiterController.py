@@ -1,12 +1,16 @@
 # RecruiterController.py
 
 from flask import request, jsonify
-from app import app
+from app import app ,db
 from utils.GenerateToken import extract_user_id_from_token
 from model.getjobbyrec_id_model import PostJobModel
 from model.getalljobsbyApp_id_model import ViewJobModel
 from model.deletejobbyjob_id_model import DeleteJobModel
 from model.addjobbyrec_id_model import jobdescriptionform_model 
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from utils.GenerateToken import extract_user_id_from_token  
+from models import Score, JobApplication, Applicant, Resume   
 
 
 
@@ -44,21 +48,40 @@ def delete_job_controller():
 
 obj3 = PostJobModel()
 @app.route('/getjobbyrec_id', methods=['GET'])
-def postjob_controller():
+def getjob_controller():
     auth_header = request.headers.get('Authorization')
     if not auth_header or not auth_header.startswith('Bearer '):
         return jsonify({"error": "Authorization token is missing or invalid"}), 401
 
     token = auth_header.split(" ")[1]
-    user_id = extract_user_id_from_token(token)
-    if user_id is None:
+    rec_id = extract_user_id_from_token(token)
+    if rec_id is None:
         return jsonify({"error": "Invalid or expired token"}), 401
 
-    result = obj3.get_all_posts(user_id)
+    result = obj3.get_all_posts(rec_id)
     if result is None:
         return jsonify({"error": "No job postings found for this recruiter"}), 404
 
     return jsonify({"PostJob": result})
+
+@app.route('/getjob_list_byrec_id', methods=['GET'])
+def getjoblist_controller():
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return jsonify({"error": "Authorization token is missing or invalid"}), 401
+
+    token = auth_header.split(" ")[1]
+    rec_id = extract_user_id_from_token(token)
+    if rec_id is None:
+        return jsonify({"error": "Invalid or expired token"}), 401
+
+    result = obj3.get_all_postsList(rec_id)
+    if result is None:
+        return jsonify({"error": "No job postings found for this recruiter"}), 404
+
+    return jsonify({"JobList": result})
+
+
 
 obj2 = ViewJobModel()
 @app.route('/getalljobsbyapp_id', methods=['GET'])
@@ -101,3 +124,67 @@ def jobdescriptionform_controller():
         return obj1.jobdescriptionform(jwt_token, request.json)
     else:
         return jsonify({"error": "Authorization header not provided"}), 401
+
+
+@app.route('/selected_scores', methods=['POST'])
+def get_selected_scores():
+    token = request.headers.get('Authorization', '').replace('Bearer ', '')
+    user_id = extract_user_id_from_token(token)
+
+    if not user_id:
+        return jsonify({"error": "Invalid or missing token"}), 401
+
+    data = request.get_json()
+
+    try:
+        no_of_students = data['noOfStudents']
+        job_id = data['job_id']
+        weights = {
+            "Soft Skills": data['Soft Skills'],
+            "Technical Skills": data['Technical Skills'],
+            "Project Weightage": data['Project Weightage'],
+            "Educational Marks": data['Educational Marks'],
+            "Branch": data['Branch'],
+            "College": data['College']
+        }
+    except KeyError as e:
+        return jsonify({"error": f"Missing parameter: {str(e)}"}), 400
+
+    # Fetching relevant data
+    scores = Score.query.join(JobApplication).filter(JobApplication.job_id == job_id).all()
+
+    if not scores:
+        return jsonify({"error": "No scores found for the given job_id"}), 404
+
+    # Calculate weighted scores
+    student_scores = []
+    for score in scores:
+        weighted_total = (
+            weights['Soft Skills'] * score.soft_skill +
+            weights['Technical Skills'] * score.tech_skill +
+            weights['Project Weightage'] * score.project +
+            weights['Educational Marks'] * score.education +
+            weights['Branch'] * score.branch +
+            weights['College'] * score.clg
+        )
+        applicant_name = score.job_application.applicant.user.name
+
+        student_scores.append({
+            "applicant_name": applicant_name,
+            "applicant_id": score.job_application.applicant_id,
+            "resume_id": score.job_application.resume_id,
+            "weighted_total": weighted_total,
+            "Soft Skills" : score.soft_skill,
+            "Technical Skills" : score.tech_skill,
+            "Project" : score.project,
+            "Educational Marks" : score.education,
+            "Branch" : score.branch,
+            "College" : score.clg
+        })
+
+    # Sort by weighted total and select top students
+    top_students = sorted(student_scores, key=lambda x: x['weighted_total'], reverse=True)[:no_of_students]
+
+    return jsonify(top_students), 200
+
+

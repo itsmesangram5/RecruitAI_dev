@@ -78,9 +78,6 @@
         >
         <select id="inputState" class="form-select">
           <option selected>Choose one..</option>
-          <option>Java Developer</option>
-          <option>Web Developer</option>
-          <option>Data Analyst</option>
         </select>
       </div>
       <div id="headingtxt2">
@@ -195,41 +192,54 @@
     </div>
 
     <script>
-      const ranges = document.querySelectorAll(".skill-range");
+          document.addEventListener("DOMContentLoaded", function () {
+      const selectElement = document.getElementById("inputState");
+      const token = sessionStorage.getItem("tokenData");
 
-      ranges.forEach((range) => {
-        const value = range.nextElementSibling;
-        value.textContent = range.value;
-
-        range.addEventListener("input", function () {
-          value.textContent = this.value;
-        });
-      });
-
-      function navigateToResult() {
-        const softSkillWeight = document.getElementById("softSkillRange").value;
-        const technicalSkillWeight = document.getElementById(
-          "technicalSkillRange"
-        ).value;
-        const projectWeightage = document.getElementById(
-          "projectWeightageRange"
-        ).value;
-        const educationalMarksWeight = document.getElementById(
-          "educationalMarksRange"
-        ).value;
-        const branch = document.getElementById("branchRange").value;
-        const college = document.getElementById("collegeRange").value;
-
-        // Redirect to result page with parameters
-        window.location.href = `/result?soft=${softSkillWeight}&tech=${technicalSkillWeight}&project=${projectWeightage}&edu=${educationalMarksWeight}&branch=${branch}&college=${college}`;
+      if (!token) {
+        console.error("Token not found in sessionStorage");
+        return;
       }
 
-      function resetValues() {
-        ranges.forEach((range) => {
-          range.value = 0;
-          range.nextElementSibling.textContent = 0;
-        });
-      }
+      console.log("Token found:", token);
+
+      fetch("http://127.0.0.1:5000/getjob_list_byrec_id", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        if (data.JobList && Array.isArray(data.JobList)) {
+          data.JobList.forEach(job => {
+            const option = document.createElement("option");
+            option.textContent = job.job_title;
+            option.value = job.job_id; // Set job_id as option value
+            selectElement.appendChild(option);
+          });
+        } else {
+          console.error("JobList is not an array or is missing");
+        }
+      })
+      .catch(error => console.error("Error fetching jobs:", error));
+    });
+
+    function navigateToResult() {
+      const softSkillWeight = document.getElementById("softSkillRange").value;
+      const technicalSkillWeight = document.getElementById("technicalSkillRange").value;
+      const projectWeightage = document.getElementById("projectWeightageRange").value;
+      const educationalMarksWeight = document.getElementById("educationalMarksRange").value;
+      const branch = document.getElementById("branchRange").value;
+      const college = document.getElementById("collegeRange").value;
+      const noOfStudents = document.querySelector("#headingtxt2 input").value;
+      const selectedJobId = document.getElementById("inputState").value; // Get selected job ID
+
+      // Redirect to result page with parameters
+      window.location.href = `/result?soft=${softSkillWeight}&tech=${technicalSkillWeight}&project=${projectWeightage}&edu=${educationalMarksWeight}&branch=${branch}&college=${college}&noOfStudents=${noOfStudents}&job_id=${selectedJobId}`;
+    }
     </script>
   </body>
 </html>
