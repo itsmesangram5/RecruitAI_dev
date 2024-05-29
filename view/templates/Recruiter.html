@@ -24,6 +24,7 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
           transition-duration: 0.4s;
           cursor: pointer;
           }
+          
         </style>
 
       </head>
@@ -31,7 +32,7 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
 
       <span class="openbtn" onclick="toggleTooltip()">
           <i style="padding-right: 4px;" class="fa-regular fa-user"></i>
-          <span id="username">RecruiterName</span>
+          <span id="username"></span>
           <div id="tooltipBox" class="tooltip-content">
             <a href="#"><i style="padding-right: 4px;" class="fa-regular fa-pen-to-square"></i>Edit Profile</a>
             <a href="#"><i style="padding-right: 4px;" class="fa-solid fa-right-from-bracket"></i>Logout</a>
@@ -50,7 +51,7 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
 
               <div class="card-body">
                 <h5 class="card-title">Posted Jobs</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Manage your active job postings, view applications, and update job details. Ensure your listings are current and attract the best candidates.</p>
                 <a href="/postedjobs" class="btn btn-primary">Posted Jobs</a>
               </div>
             </div><div class="card mt-5 ms-5" style="width: 19rem;">
@@ -58,21 +59,21 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
 
               <div class="card-body">
                 <h5 class="card-title">Job Description</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text"> Create and refine job descriptions to clearly define roles and responsibilities. Craft compelling job descriptions to attract candidates.</p>
                 <a href="/jobdescriptionform_view" class="btn btn-primary">Description</a>
               </div>
             </div><div class="card mt-5 ms-5" style="width: 19rem;">
               <img src="../static/images/recruiterimgsthird.png"  width="220px" style="margin-left: 40px; "  alt="...">
               <div class="card-body">
                 <h5 class="card-title">Shortlisting</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Review and rank candidates based on their resumes and qualifications. Use advanced filters and scoring to identify the best fits your positions.</p>
                 <a href="/shortlisting" class="btn btn-primary">Shortlisting</a>
               </div>
             </div><div class="card mt-5 ms-5" style="width: 19rem;">
               <img src="../static/images/applicantimg4.jpg" width="220px" style="margin-left: 40px;" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Upcoming</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Keep track of scheduled interviews and recruitment events. Prepare for interactions with top candidates and streamline your interview process.</p>
                 <a href="#" class="btn btn-primary">Next Jobs</a>
               </div>
             </div>
@@ -94,7 +95,12 @@ Coding By CodingNepal - codingnepalweb.com --> <html lang="en">
           tooltip.style.display = "block";
         }
       }
-      
+      window.onload = function() {
+      var storedUserData = JSON.parse(sessionStorage.getItem('userData'));
+      var userName = storedUserData.name;
+      console.log(userName);
+      document.getElementById('username').innerHTML = userName;
+    };
       // Close tooltip box if clicked outside
       window.onclick = function(event) 
       {
