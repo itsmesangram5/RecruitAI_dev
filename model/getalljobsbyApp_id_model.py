@@ -15,6 +15,7 @@ class ViewJobModel:
             jobs_data = []
             for job in jobs:
                 job_data = {
+                    "job_id":job.job_id,
                     "job_title": job.job_title,
                     "branch": job.branch,
                     "passout_yr": job.passout_yr,

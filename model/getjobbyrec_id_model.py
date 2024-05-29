@@ -19,6 +19,7 @@ class PostJobModel:
             result = []
             for job in job_postings:
                 result.append({
+                    "job_id":job.job_id,
                     "job_title": job.job_title,
                     "branch": job.branch,
                     "passout_yr": job.passout_yr,

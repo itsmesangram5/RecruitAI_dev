@@ -71,36 +71,47 @@
             })
             .catch(error => console.error('Error fetching jobs:', error));
         }
-
         function displayJobs(jobs) {
-            const jobContainer = document.getElementById('job-cards');
-            jobContainer.innerHTML = ''; // Clear any existing content
+    const jobContainer = document.getElementById('job-cards');
+    jobContainer.innerHTML = ''; // Clear any existing content
 
-            if (!jobs || jobs.length === 0) {
-                jobContainer.innerHTML = '<p>No job postings found.</p>';
-                return;
-            }
+    if (!jobs || jobs.length === 0) {
+        jobContainer.innerHTML = '<p>No job postings found.</p>';
+        return;
+    }
 
-            jobs.forEach(job => {
-                const title = job.job_title || 'No title available';
-                const description = job.job_description || 'No description available';
-                const ctc = job.ctc || 'Not specified';
-                const branch = job.branch || 'Not specified';
+    jobs.forEach(job => {
+        const jobID = job.job_id || 'ID not available';
+        const title = job.job_title || 'No title available';
+        const description = job.job_description || 'No description available';
+        const ctc = job.ctc || 'Not specified';
+        const branch = job.branch || 'Not specified';
 
-                const jobCard = document.createElement('div');
-                jobCard.className = 'card';
-                jobCard.innerHTML = `
-                    <h5>${title}</h5>
-                    <p>${description}</p>
-                    <div class="details">
-                        <span>CTC: ${ctc}</span>
-                        <span>Branch: ${branch}</span>
-                    </div>
-                    <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-                `;
-                jobContainer.appendChild(jobCard);
-            });
-        }
+        const jobCard = document.createElement('div');
+        jobCard.className = 'card';
+        jobCard.innerHTML = `
+            <h5>${title}</h5>
+            <p>${description}</p>
+            <div class="details">
+                <span>Job ID: ${jobID}</span>
+                <span>CTC: ${ctc}</span>
+                <span>Branch: ${branch}</span>
+            </div>
+            <button type="button" class="btn btn-primary apply-button" data-job-id="${jobID}">Apply Now</button>
+        `;
+        jobContainer.appendChild(jobCard);
+
+        // Add event listener to the "Apply Now" button
+        const applyButton = jobCard.querySelector('.apply-button');
+        applyButton.addEventListener('click', function() {
+            const jobId = this.getAttribute('data-job-id');
+            sessionStorage.setItem('job_id', jobId);
+            // Optionally, redirect to the select resume page
+            window.location.href = '/selectresume';
+        });
+    });
+}
+
     </script>
 </body>
 </html>

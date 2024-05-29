@@ -84,48 +84,24 @@
         const branchWeight = parseInt(urlParams.get('branch'));
 
         const studentData = [
-        { name: "Student 1", soft: 80, tech: 70, edu: 85, college: 90, branch: 85 },
-            { name: "Student 2", soft: 90, tech: 60, edu: 75, college: 85, branch: 80 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 4", soft: 85, tech: 75, edu: 65, college: 75, branch: 70 },
-            { name: "Student 5", soft: 75, tech: 85, edu: 80, college: 95, branch: 90 }
-
-            // Student data here
-        ];
+  { "name": "Student 1", "soft": 80, "tech": 70, "edu": 85, "college": 90, "branch": 85 },
+  { "name": "Student 2", "soft": 90, "tech": 60, "edu": 75, "college": 85, "branch": 80 },
+  { "name": "Student 3", "soft": 85, "tech": 65, "edu": 80, "college": 88, "branch": 82 },
+  { "name": "Student 4", "soft": 70, "tech": 75, "edu": 78, "college": 87, "branch": 83 },
+  { "name": "Student 5", "soft": 88, "tech": 68, "edu": 82, "college": 86, "branch": 84 },
+  { "name": "Student 6", "soft": 92, "tech": 72, "edu": 81, "college": 89, "branch": 80 },
+  { "name": "Student 7", "soft": 75, "tech": 77, "edu": 79, "college": 84, "branch": 78 },
+  { "name": "Student 8", "soft": 83, "tech": 73, "edu": 76, "college": 91, "branch": 81 },
+  { "name": "Student 9", "soft": 79, "tech": 70, "edu": 77, "college": 88, "branch": 79 },
+  { "name": "Student 10", "soft": 84, "tech": 66, "edu": 85, "college": 87, "branch": 85 },
+  { "name": "Student 11", "soft": 76, "tech": 74, "edu": 80, "college": 86, "branch": 82 },
+  { "name": "Student 12", "soft": 89, "tech": 69, "edu": 84, "college": 85, "branch": 83 },
+  { "name": "Student 13", "soft": 78, "tech": 71, "edu": 79, "college": 89, "branch": 80 },
+  { "name": "Student 14", "soft": 81, "tech": 67, "edu": 82, "college": 90, "branch": 86 },
+  { "name": "Student 15", "soft": 87, "tech": 72, "edu": 83, "college": 88, "branch": 84 }
+]
+ // Student data here
+        
 
         // Calculate weighted total and rank students
         studentData.forEach((student, index) => {
