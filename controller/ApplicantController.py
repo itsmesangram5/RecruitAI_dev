@@ -4,11 +4,11 @@ from flask import request , jsonify
 import os
 from utils.GenerateToken import extract_user_id_from_token
 from config import Config
-from models import Applicant , Resume 
+from models import Applicant , Resume , JobApplication , JobPosting
 from werkzeug.utils import secure_filename
 from model.deleteresumebyresume_id_model import DeleteResumeModel
 from utils.GenerateToken import extract_user_id_from_token
-
+from model.job_application_model import JobApplicationModel
 app.config.from_object(Config)
 
 obj = resume_model() 
@@ -93,3 +93,88 @@ add_score_instance = AddScore()
 @app.route('/add_score/<int:jobapplication_id>', methods=['GET'])
 def add_score(jobapplication_id):
     return add_score_instance.add_score(jobapplication_id)
+
+
+job_app_model = JobApplicationModel()
+
+
+@app.route('/apply', methods=['POST'])
+def apply_job():
+    # Extract JSON data from the request
+    data = request.get_json()
+
+    # Extract resume_id and job_id from JSON data
+    resume_id = data.get('resume_id')
+    job_id = data.get('job_id')
+
+    # Extract JWT token from Authorization header
+    auth_header = request.headers.get('Authorization')
+    if auth_header is None:
+        return jsonify({'message': 'Authorization header is missing'}), 401
+
+    # Extract user_id from JWT token
+    token = auth_header.split(" ")[1]
+    user_id = extract_user_id_from_token(token)
+    if user_id is None:
+        return jsonify({'message': 'Invalid token or token has expired'}), 401
+
+    # Fetch applicant_id from the database using user_id
+    applicant_id = fetch_applicant_id(user_id)
+    if applicant_id is None:
+        return jsonify({'message': 'User is not an applicant'}), 403
+
+    # Fetch recruiter_id from the database using job_id
+    recruiter_id = fetch_recruiter_id(job_id)
+    if recruiter_id is None:
+        return jsonify({'message': 'Job not found or invalid job_id'}), 404
+
+    # Create a new JobApplication entry
+    job_application = JobApplication(
+        job_id=job_id,
+        recruiter_id=recruiter_id,
+        applicant_id=applicant_id,
+        resume_id=resume_id,
+        status="Applied"
+    )
+
+    # Add the new entry to the database
+    db.session.add(job_application)
+    db.session.commit()
+
+    return jsonify({'message': 'Job application submitted successfully'}), 201
+
+
+
+@app.route('/getalljobapplications', methods=['GET'])
+def getalljobapplications_controller():
+    auth_header = request.headers.get('Authorization')
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return jsonify({"error": "Authorization token is missing or invalid"}), 401
+
+    token = auth_header.split(" ")[1]
+    user_id = extract_user_id_from_token(token)
+    if user_id is None:
+        return jsonify({"error": "Invalid or expired token"}), 401
+    
+    applicant_id=fetch_applicant_id(user_id)
+    result = job_app_model.getAllJobApplications(applicant_id)
+    if result is None:
+        return jsonify({"error": "No Job Applications found for this recruiter"}), 404
+    return jsonify({"Job Applications": result})
+    
+
+def fetch_applicant_id(user_id):
+    # Query the Applicant table to fetch applicant_id using user_id
+    applicant = Applicant.query.filter_by(user_id=user_id).first()
+    if applicant:
+        return applicant.applicant_id
+    else:
+        return None
+
+def fetch_recruiter_id(job_id):
+    # Query the JobPosting table to fetch recruiter_id using job_id
+    job_posting = JobPosting.query.get(job_id)
+    if job_posting:
+        return job_posting.recruiter_id
+    else:
+        return None

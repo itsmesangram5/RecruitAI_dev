@@ -89,7 +89,7 @@
     <a style="font-weight: bold; font-size: 25px; letter-spacing: 0.1cap;" class="navbar-brand">Your resumes</a>
     <ul class="nav nav-pills">
       <li class="nav-item dropdown">
-        <a style="font-size: 20px;color: whitesmoke;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i style="padding-right: 4px;" class="fa-solid fa-user-tie"></i> Username</a>
+        <a style="font-size: 20px;color: whitesmoke;"  class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i style="padding-right: 4px;" class="fa-solid fa-user-tie"></i> Username</a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="/applicant">Home</a></li>
           <li><a class="dropdown-item" href="/applications">Applications</a></li>
@@ -226,7 +226,7 @@
           fetchResumes();
           alert(data.message);
         } else {
-          alert(`Error: ${data.message}`);
+          alert(`Success: ${data.message}`);
         }
       })
       .catch(error => {
@@ -265,6 +265,7 @@
         console.error('Error:', error);
         alert('An error occurred while viewing the resume.');
       });
+       
     }
   </script>
 </body>
