@@ -8,3 +8,4 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'resumes')
     OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+    SCHEDULER_API_ENABLED = True

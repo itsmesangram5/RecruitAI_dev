@@ -307,6 +307,6 @@ class ProcessResume:
             db.session.commit()
             processed_resume_path = os.path.join(processed_folder, resume_file)
             shutil.move(resume_path, processed_resume_path)
-            return jsonify({"message": "Job processed successfully."}), 200
-        return jsonify({"Error": "Something Went wrong."}), 500
+            return "Job processed successfully."
+        return "Something Went wrong."
     
