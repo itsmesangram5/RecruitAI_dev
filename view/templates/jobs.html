@@ -1,196 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-15">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha3154-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT15bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha3154-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/76051b1a44.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{url_for('static',filename='css/jobs.css')}}" />
-
     <title>Document</title>
-
-
-  
 </head>
 <body class="contain">
     <nav id="navbar-example15" class="navbar sticky-top bg-dark border-bottom border-body" data-bs-theme="dark">
-        <a class="navbar-brand" href="#">       
-            <span style="font-size: 30px; margin-left: 20px;" class="homepagetxt">RecruitAI</span> 
+        <a class="navbar-brand" href="#">
+            <span style="font-size: 30px; margin-left: 20px;" class="homepagetxt">RecruitAI</span>
         </a>
         <a style="font-weight: bold; font-size: 25px; letter-spacing: 0.1cap;" class="navbar-brand">Jobs </a>
         <ul class="nav nav-pills">
-         
-          <li class="nav-item dropdown">
-            <a style="font-size: 20px;color: whitesmoke;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">     <i style="padding-right: 4px;" class="fa-solid fa-user-tie"></i> 
-                Username</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/applicant">Home</a></li>
-              <li><a class="dropdown-item" href="/applications">Application</a></li>
-              <li><a class="dropdown-item" href="/uploadresume">Upload resume</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a  class="dropdown-item" href="#scrollspyHeading5"><i style="padding-right: 4px;" class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
-            </ul>
-          </li>
+            <li class="nav-item dropdown">
+                <a style="font-size: 20px;color: whitesmoke;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                    <i style="padding-right: 4px;" class="fa-solid fa-user-tie"></i> 
+                    Username
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/applicant">Home</a></li>
+                    <li><a class="dropdown-item" href="/applications">Application</a></li>
+                    <li><a class="dropdown-item" href="/uploadresume">Upload resume</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#scrollspyHeading5"><i style="padding-right: 4px;" class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+                </ul>
+            </li>
         </ul>
-      </nav>
-      <div >
-        <div class="card-container">
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
+    </nav>
+    <div>
+        <div class="card-container" id="job-cards">
+            <!-- Job cards will be inserted here by JavaScript -->
+        </div>
+    </div>
 
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-                   <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <div class="card">
-              <h5>React Developer</h5>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada ante eu ligula scelerisque, a faucibus ipsum efficitur. Donec rhoncus lacus eget magna congue, nec volutpat velit aliquam.</p>
-              <div class="details">
-                  <span>CTC: $800</span>
-                  <span>Location: New York</span>
-              </div>
-
-              <a href="/selectresume"><button type="button" class="btn btn-primary">Apply Now</button></a>
-
-            </div>
-          <!-- Add more cards here -->
-      </div>
-      </div>
-    
-   
     <script>
-        // Show dropdown menu
-        // Show tooltip box
-        // Toggle tooltip box
-        function toggleTooltip() {
-            var tooltip = document.getElementById("tooltipBox");
-            if (tooltip.style.display === "block") {
-                tooltip.style.display = "none";
-            } else {
-                tooltip.style.display = "block";
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchJobs();
+        });
+
+        function fetchJobs() {
+            const token = sessionStorage.getItem('tokenData');
+            if (!token) {
+                console.error("No token found in session storage");
+                return;
             }
+
+            fetch('/getalljobsbyapp_id', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                    return;
+                }
+                displayJobs(data.jobs);
+            })
+            .catch(error => console.error('Error fetching jobs:', error));
         }
-        
-        // Close tooltip box if clicked outside
-        window.onclick = function(event) {
-            var tooltip = document.getElementById("tooltipBox");
-            if (event.target !== tooltip && event.target.closest('.openbtn') === null) {
-                tooltip.style.display = "none";
-            }
-        }
+        function displayJobs(jobs) {
+    const jobContainer = document.getElementById('job-cards');
+    jobContainer.innerHTML = ''; // Clear any existing content
+
+    if (!jobs || jobs.length === 0) {
+        jobContainer.innerHTML = '<p>No job postings found.</p>';
+        return;
+    }
+
+    jobs.forEach(job => {
+        const jobID = job.job_id || 'ID not available';
+        const title = job.job_title || 'No title available';
+        const description = job.job_description || 'No description available';
+        const ctc = job.ctc || 'Not specified';
+        const branch = job.branch || 'Not specified';
+
+        const jobCard = document.createElement('div');
+        jobCard.className = 'card';
+        jobCard.innerHTML = `
+            <h5>${title}</h5>
+            <p>${description}</p>
+            <div class="details">
+                <span>Job ID: ${jobID}</span>
+                <span>CTC: ${ctc}</span>
+                <span>Branch: ${branch}</span>
+            </div>
+            <button type="button" class="btn btn-primary apply-button" data-job-id="${jobID}">Apply Now</button>
+        `;
+        jobContainer.appendChild(jobCard);
+
+        // Add event listener to the "Apply Now" button
+        const applyButton = jobCard.querySelector('.apply-button');
+        applyButton.addEventListener('click', function() {
+            const jobId = this.getAttribute('data-job-id');
+            sessionStorage.setItem('job_id', jobId);
+            // Optionally, redirect to the select resume page
+            window.location.href = '/selectresume';
+        });
+    });
+}
+
     </script>
 </body>
 </html>

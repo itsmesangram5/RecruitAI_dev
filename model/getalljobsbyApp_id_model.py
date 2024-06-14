@@ -15,6 +15,7 @@ class ViewJobModel:
             jobs_data = []
             for job in jobs:
                 job_data = {
+                    "job_id":job.job_id,
                     "job_title": job.job_title,
                     "branch": job.branch,
                     "passout_yr": job.passout_yr,
@@ -28,7 +29,7 @@ class ViewJobModel:
                     "soft_skills": job.soft_skills,
                     "ctc": float(job.ctc),
                     "positions": job.positions,
-                    "last_date_to_apply": job.last_date_to_apply.isoformat(),
+                    "last_date_to_apply": job.last_date_to_apply,
                     "company_name": job.company_name,
                     "job_description": job.job_desripation 
                 }

@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha3154-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT15bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha3154-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/76051b1a44.js" crossorigin="anonymous"></script>
@@ -54,7 +53,8 @@
                             <th>Student Name</th>
                             <th>Soft Skills</th>
                             <th>Technical Skills</th>
-                            <th>Educational Marks</th>
+                            <th>Educational Score</th>
+                            <th>Project Score</th>
                             <th>College</th>
                             <th>Branch</th>
                             <th>Weighted Total</th>
@@ -69,87 +69,72 @@
           </div>
        
       </div>
-
-
-    
-      
-  
     <script>
+    document.addEventListener("DOMContentLoaded", async function () {
+        // Retrieve token from session storage
+        const token = sessionStorage.getItem("tokenData");
+
         // Parse URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const softWeight = parseInt(urlParams.get('soft'));
-        const techWeight = parseInt(urlParams.get('tech'));
-        const eduWeight = parseInt(urlParams.get('edu'));
-        const collegeWeight = parseInt(urlParams.get('college'));
-        const branchWeight = parseInt(urlParams.get('branch'));
+        const softWeight = parseInt(urlParams.get("soft"));
+        const techWeight = parseInt(urlParams.get("tech"));
+        const projectWeight = parseInt(urlParams.get("project"));
+        const eduWeight = parseInt(urlParams.get("edu"));
+        const collegeWeight = parseInt(urlParams.get("college"));
+        const branchWeight = parseInt(urlParams.get("branch"));
+        const noOfStudents = parseInt(urlParams.get("noOfStudents"));
+        const job_id = parseInt(urlParams.get("job_id"));
 
-        const studentData = [
-        { name: "Student 1", soft: 80, tech: 70, edu: 85, college: 90, branch: 85 },
-            { name: "Student 2", soft: 90, tech: 60, edu: 75, college: 85, branch: 80 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 3", soft: 70, tech: 80, edu: 90, college: 80, branch: 75 },
-            { name: "Student 4", soft: 85, tech: 75, edu: 65, college: 75, branch: 70 },
-            { name: "Student 5", soft: 75, tech: 85, edu: 80, college: 95, branch: 90 }
+        // Prepare API input object
+        const inputData = {
+            "noOfStudents":noOfStudents,
+            "job_id":job_id,
+            "Soft Skills": softWeight,
+            "Technical Skills": techWeight,
+            "Project Weightage": projectWeight,
+            "Educational Marks": eduWeight,
+            "Branch": branchWeight,
+            "College": collegeWeight
+        };
 
-            // Student data here
-        ];
+        try {
+            const response = await fetch("http://127.0.0.1:5000/selected_scores", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify(inputData)
+            });
 
-        // Calculate weighted total and rank students
-        studentData.forEach((student, index) => {
-            student.weightedTotal = softWeight * student.soft + techWeight * student.tech + eduWeight * student.edu + collegeWeight * student.college + branchWeight * student.branch;
-        });
+            if (!response.ok) {
+                throw new Error("Failed to fetch data from the API.");
+            }
 
-        studentData.sort((a, b) => b.weightedTotal - a.weightedTotal);
+            const data = await response.json();
 
-        // Populate table with student data
-        const tbody = document.getElementById('studentData');
-        studentData.forEach((student, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${student.name}</td>
-                <td>${student.soft}</td>
-                <td>${student.tech}</td>
-                <td>${student.edu}</td>
-                <td>${student.college}</td>
-                <td>${student.branch}</td>
-                <td>${student.weightedTotal}</td>
-                <td>${index + 1}</td>
-            `;
-            tbody.appendChild(row);
-        });
-    </script>
+            // Populate table with API data
+            const tbody = document.getElementById("studentData");
+            tbody.innerHTML = ""; // Clear existing table data
+            data.forEach((student, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${student.applicant_name}</td>
+                    <td>${student["Soft Skills"]}</td>
+                    <td>${student["Technical Skills"]}</td>
+                    <td>${student["Educational Marks"]}</td>
+                    <td>${student.Project}</td>
+                    <td>${student.College}</td>
+                    <td>${student.Branch}</td>
+                    <td>${student.weighted_total}</td>
+                    <td>${index + 1}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+    });
+</script>
 </body>
 </html>
