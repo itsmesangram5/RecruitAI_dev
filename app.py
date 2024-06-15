@@ -14,7 +14,7 @@ app = Flask(__name__, template_folder='view/templates', static_folder='view/stat
 
 # Set configuration variables from config module
 app.config.from_object(config.Config)
-
+app.debug(True)
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
